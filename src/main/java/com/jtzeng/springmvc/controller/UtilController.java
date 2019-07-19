@@ -14,6 +14,7 @@ import com.pdd.pop.sdk.http.api.request.PddUtilDivideImageRequest;
 import com.pdd.pop.sdk.http.api.response.PddTimeGetResponse;
 import com.pdd.pop.sdk.http.api.response.PddUtilDivideBase64ImageResponse;
 import com.pdd.pop.sdk.http.api.response.PddUtilDivideImageResponse;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,15 +26,15 @@ public class UtilController {
     @Resource
     private UtilServiceI utilServiceImpl;
     @RequestMapping("/time/get")
-    public String timeGet(ComEntity param){
+    public String timeGet(@RequestBody ComEntity param){
         return utilServiceImpl.timeGet(param);
     }
     @RequestMapping("/divide/base64/image")
-    public String divideBase64Image(ComEntity param){
+    public String divideBase64Image(@RequestBody ComEntity param){
         return utilServiceImpl.divideBase64Image(param);
     }
     @RequestMapping("/divide/image")
-    public String divideImage(ComEntity param){
+    public String divideImage(@RequestBody ComEntity param){
         return utilServiceImpl.divideImage(param);
     }
 }

@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("myProperties")
 @Data
 public class MyProperties {
    @Value("#{configProperties['pdd.apiServerUrl']}")
@@ -13,13 +13,4 @@ public class MyProperties {
    private String clientId;
    @Value("#{configProperties['pdd.clientSecret']}")
    private String clientSecret;
-   private static String accessToken;
-
-   public static String getAccessToken() {
-      return accessToken;
-   }
-
-   public static void setAccessToken(String accessToken) {
-      MyProperties.accessToken = accessToken;
-   }
 }

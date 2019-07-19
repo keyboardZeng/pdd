@@ -5,7 +5,6 @@ import com.jtzeng.springmvc.serviceI.GoodsServiceI;
 import com.jtzeng.springmvc.util.PddClient;
 import com.pdd.pop.sdk.common.util.JsonUtil;
 import com.pdd.pop.sdk.http.PopClient;
-import com.pdd.pop.sdk.http.PopHttpClient;
 import com.pdd.pop.sdk.http.api.request.PddGoodsCatsGetRequest;
 import com.pdd.pop.sdk.http.api.request.PddGoodsCpsUnitDeleteRequest;
 import com.pdd.pop.sdk.http.api.request.PddGoodsOptGetRequest;
@@ -14,13 +13,17 @@ import com.pdd.pop.sdk.http.api.response.PddGoodsCpsUnitDeleteResponse;
 import com.pdd.pop.sdk.http.api.response.PddGoodsOptGetResponse;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 @Service("goodsServiceImpl")
 public class GoodsServiceImpl implements GoodsServiceI {
+    @Resource
+    private PddClient pddClient;
     public String catsGet(ComEntity param) {
-        PopClient client = PddClient.getPopHttpClient();
+        PopClient client = pddClient.getPopHttpClient();
         PddGoodsCatsGetRequest request = new PddGoodsCatsGetRequest();
         request.setParentCatId(param.getParent_cat_id());
-        PddGoodsCatsGetResponse response=null;
+        PddGoodsCatsGetResponse response = null;
         try {
             response = client.syncInvoke(request);
         } catch (Exception e) {
@@ -31,7 +34,7 @@ public class GoodsServiceImpl implements GoodsServiceI {
     }
 
     public String optGet(ComEntity param) {
-        PopClient client = PddClient.getPopHttpClient();
+        PopClient client = pddClient.getPopHttpClient();
         PddGoodsOptGetRequest request = new PddGoodsOptGetRequest();
         request.setParentOptId(param.getParent_opt_id());
         PddGoodsOptGetResponse response;
@@ -45,7 +48,7 @@ public class GoodsServiceImpl implements GoodsServiceI {
     }
 
     public String cpsUnitGet(ComEntity param) {
-        PopClient client = PddClient.getPopHttpClient();
+        PopClient client = pddClient.getPopHttpClient();
 
         PddGoodsCpsUnitDeleteRequest request = new PddGoodsCpsUnitDeleteRequest();
         request.setGoodsId(param.getGoods_id());
