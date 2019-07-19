@@ -23,6 +23,14 @@
     <context:component-scan base-package="com.jtzeng.springmvc.*"/>
     <mvc:resources mapping="/resource/**" location="/resource/"/>
 
+    <!-- 获取properties中的值 -->
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:config.properties</value>
+            </list>
+        </property>
+    </bean>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
