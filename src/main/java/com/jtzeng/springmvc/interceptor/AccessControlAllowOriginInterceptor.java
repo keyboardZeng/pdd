@@ -1,5 +1,6 @@
 package com.jtzeng.springmvc.interceptor;
 
+import com.pdd.pop.ext.apache.http.HttpStatus;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,7 +17,13 @@ public class AccessControlAllowOriginInterceptor implements HandlerInterceptor {
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "content-type, x-requested-with");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
 
+        if ("OPTIONS".equals(request.getMethod()))
+        {
+            response.setStatus(200);
+            return false;
+        }
         return true;
     }
     //执行方法之后执行

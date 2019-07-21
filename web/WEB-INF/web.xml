@@ -7,6 +7,10 @@
         <servlet-name>DispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
+            <param-name>dispatchOptionsRequest</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
             <param-name>contextConfigLocation</param-name>
             <param-value>
                 /WEB-INF/DispatcherServlet-context.xml
@@ -17,4 +21,5 @@
         <servlet-name>DispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
 </web-app>

@@ -177,6 +177,10 @@ public class DdkController {
     public String goodsSearch(@RequestBody ComEntity param){
         return ddkServiceImpl.goodsSearch(param);
     }
+    @RequestMapping("/goods/superSearch")
+    public String superSearch(@RequestBody ComEntity param){
+        return ddkServiceImpl.goodsSearch(param);
+    }
     @RequestMapping("/goods/detail")
     public String goodsDetail(@RequestBody ComEntity param){
         return ddkServiceImpl.goodsDetail(param);
